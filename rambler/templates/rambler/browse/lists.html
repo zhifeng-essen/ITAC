@@ -1,0 +1,27 @@
+{% extends "rambler/base.html" %}
+{% load static %}
+{% block title %}Lists page{% endblock %}
+
+{% block content %}
+    <script src="{% static "js/browse_lists.js" %}" type="text/javascript"></script>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Browse Database</h3>
+        </div>
+        <div class="panel-body">
+            <div style="width: 180px;">
+                <select class="selectpicker show-tick form-control" id="browse_type"
+                        onclick="change_option()">
+                    <option value="Herb">Herb</option>
+                    <option value="Prescription">Prescription</option>
+                    <option value="Ingredient">Ingredient</option>
+                    <option value="Target">Target</option>
+                    <option value="Disease">Disease</option>
+                </select>
+            </div>
+
+            <!-- boostrap-table -->
+            <table id="table"></table>
+        </div>
+    </div>
+{% endblock %}

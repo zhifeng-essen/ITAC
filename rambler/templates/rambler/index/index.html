@@ -1,0 +1,86 @@
+{% extends "rambler/base.html" %}
+{% load static %}
+{% block title %}Index page{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static "css/uniprot.min.css" %}">
+    <link rel="stylesheet" href="{% static "font-awesome-4.7.0/css/font-awesome.min.css" %}">
+    <style>
+        h3 {
+            font-family: 'Oleo Script', cursive;
+        }
+    </style>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <nav id="browse-nav-container">
+                <a id="uniprot-browse">
+                    <div class="uniprot-browse-box"><h3 style="font-family: 'Baloo Bhaina', cursive; font-size: 40px">
+                        ITAC</h3>
+                        <div class="uniprot-browse-shortdesc" style="font-family: 'Monospaced', cursive; font-size: 16px">Integration of TCM and CAS<br><br><br></div>
+                    </div>
+                    <div style="z-index:10" class="uniprot-browse-box-inner" id="swissprot-browse">
+                        <h5 style="margin-bottom: 3px">News</h5>
+                        <div class="container" style="width: 100%; margin-left: 5px; margin-right: 5px">
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                        </div>
+                    </div>
+                    <div style="z-index:10" class="uniprot-browse-box-inner" id="swissprot-browse">
+                        <h5 style="margin-bottom: 3px">Realease notes</h5>
+                        <div class="container" style="width: 100%; margin-left: 5px; margin-right: 5px">
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                            <li>test</li>
+                        </div>
+                    </div>
+                </a>
+                <a href="/browse" class="browse-box" id="uniref-browse"><h3><br>Browse</h3><br>
+                    <i class="fa fa-safari fa-3x"></i>
+                </a>
+                <a href="/search" class="browse-box" id="uniparc-browse"><h3><br>Search</h3><br>
+                    <i class="fa fa-search fa-3x"></i>
+                </a>
+                <a href="/download" class="browse-box" id="proteomes-browse"><h3><br>Download</h3><br>
+                    <i class="fa fa-arrow-circle-o-down fa-3x"></i>
+                    <br><br><br>
+                </a>
+                <div class="" id="supporting-data-browse"><h3><br>Data summary<br><br></h3></div>
+
+                <div id="supporting-data">
+                    <a href="/citations" class="supporting-browse-box">
+                        <br><i class="fa fa-envira fa-3x"></i><br>
+                        Herbs
+                        <div class="browse-icon body-icon-conceptual">499<br></div>
+                    </a><a href="/taxonomy" class="supporting-browse-box">
+                    <br><i class="fa fa-book fa-3x"></i><br>
+                    Prescriptions
+                    <div class="browse-icon body-icon-functional">46929<br></div>
+                </a><a href="/locations" class="supporting-browse-box">
+                    <br><i class="fa fa-puzzle-piece fa-3x"></i><br>
+                    Ingredients
+                    <div class="browse-icon body-icon-uniprot">48596<br></div>
+                </a><a href="/database" class="supporting-browse-box">
+                    <br><i class="fa fa-bullseye fa-3x"></i><br>
+                    Targets
+                    <div class="browse-icon body-icon-uniprot">4302<br></div>
+                </a><a href="/diseases" class="supporting-browse-box">
+                    <br><i class="fa fa-plus fa-3x"></i><br>
+                    Diseases
+                    <div class="browse-icon body-icon-conceptual">5235<br></div>
+                </a>
+                    <br><br>
+                </div>
+            </nav>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "rambler/browse/details.html" %}
+
+{% block summary-panel %}
+    <table class="table">
+        <tr>
+            <td><b>Molecule name</b></td>
+            <td colspan="5">{{ ingredient.Molecule_name }}</td>
+        </tr>
+        <tr>
+            <td><b>Molecule formula</b></td>
+            <td colspan="2">{{ ingredient.Molecule_formula }}</td>
+            <td><b>Molecule weight</b></td>
+            <td colspan="2">{{ ingredient.Molecule_weight }}</td>
+        </tr>
+        <tr>
+            <td><b>OB score</b></td>
+            <td colspan="2">{{ ingredient.OB_score }}</td>
+            <td><b>CAS id</b></td>
+            <td colspan="2">5{{ ingredient.CAS_id }}</td>
+        </tr>
+        <tr>
+            <td><b>External Links</b></td>
+            <td colspan="5"><a href="https://pubchem.ncbi.nlm.nih.gov/compound/">PubChem:{{ ingredient.PubChem_id }}</a>&emsp;<a
+                    href="http://bidd.nus.edu.sg/group/TCMsite/CompoundDetails.aspx">TCM-ID:{{ ingredient.TCM_ID_id }}</a>&emsp;<a
+                    href="http://www.megabionet.org/tcmid/">TCMID:{{ ingredient.TCMID_id }}</a>&emsp;<a
+                    href="http://lsp.nwu.edu.cn/molecule.php">TCMSP:{{ ingredient.TCMSP_id }}</a>&emsp;
+            </td>
+        </tr>
+    </table>
+{% endblock %}
+
+
+{% block component-panel %}
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="Display">Display：</label>
+            <div style=" float: left; width: 180px;">
+                <select class="selectpicker show-tick form-control" id="browse_type">
+                    <option value="Herb">Herb</option>
+                    <option value="Prescription">Prescription</option>
+                    <option value="Target">Target</option>
+                    <option value="Disease">Disease</option>
+                </select>
+            </div>
+            <label for="Display">Select：</label>
+            <div style=" float: left; width: 180px;">
+                <select class="selectpicker show-tick form-control" id="browse_select"
+                        autocomplete="off">
+                    <option value="0">All</option>
+                    <option value="1" class="ind_sl">P-value < 0.05</option>
+                    <option value="2" class="ind_sl">FDR(BH) < 0.05</option>
+                    <option value="3" class="ind_sl">FDR(Bonferroni) < 0.05</option>
+                </select>
+            </div>
+            <label for="Display">Sort By：</label>
+            <div style=" float: left; width: 180px;">
+                <select class="selectpicker show-tick form-control" id="browse_sort"
+                        autocomplete="off">
+                    <option value="0">ID</option>
+                    <option value="1" class="ind_sl">P-value</option>
+                    <option value="2" class="ind_sl">FDR(BH)</option>
+                    <option value="3" class="ind_sl">FDR(Bonferroni)</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary pull-right" style="margin-right: 15px" id="dl-btn" type="button">Download
+            </button>
+        </div>
+        <input type="hidden" id="req_name" value="{{ ingredient.ID }}">
+    </form>
+    <table id="table"></table>
+{% endblock %}
+
+

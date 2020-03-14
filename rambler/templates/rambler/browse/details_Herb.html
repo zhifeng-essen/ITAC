@@ -1,0 +1,85 @@
+{% extends "rambler/browse/details.html" %}
+
+{% block summary-panel %}
+    <table class="table">
+        <tr>
+            <td><b>Chinese name</b></td>
+            <td colspan="2">{{ herb.Chinese_name }}</td>
+            <td><b>Pinyin name</b></td>
+            <td colspan="2">{{ herb.Pinyin_name }}</td>
+        </tr>
+        <tr>
+            <td><b>Latin name</b></td>
+            <td colspan="2"><i>{{ herb.Latin_name }}</i></td>
+            <td><b>English name</b></td>
+            <td colspan="2">{{ herb.English_name }}</td>
+        </tr>
+        <tr>
+            <td><b>Properties</b></td>
+            <td colspan="2">{{ herb.Properties }}</td>
+            <td><b>Meridians</b></td>
+            <td colspan="2">{{ herb.Meridians }}</td>
+        </tr>
+        <tr>
+            <td><b>Class in Chinese</b></td>
+            <td colspan="2">{{ herb.Class_Chinese }}</td>
+            <td><b>Class in English</b></td>
+            <td colspan="2">{{ herb.Class_English }}</td>
+        </tr>
+        <tr>
+            <td><b>Function</b></td>
+            <td colspan="5">{{ herb.Function }}</td>
+        </tr>
+        <tr>
+            <td><b>External Links</b></td>
+            <td colspan="5"><a
+                    href="http://bidd.nus.edu.sg/group/TCMsite/HerbDetails.aspx?HBID=2">TCM-ID:{{ herb.TCM_ID_id }}</a>&emsp;<a
+                    href="http://www.megabionet.org/tcmid/">TCMID:{{ herb.TCMID_id }}</a>&emsp;<a
+                    href="http://lsp.nwu.edu.cn/tcmsp.php">TCMSP:{{ herb.TCMSP_id }}</a></td>
+        </tr>
+    </table>
+{% endblock %}
+
+
+{% block component-panel %}
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="Display">Display：</label>
+            <div style=" float: left; width: 180px;">
+                <select class="selectpicker show-tick form-control" id="browse_type">
+                    <option value="Ingredient">Ingredient</option>
+                    <option value="Prescription">Prescription</option>
+                    <option value="Target">Target</option>
+                    <option value="Disease">Disease</option>
+                </select>
+            </div>
+            <label for="Display">Select：</label>
+            <div style=" float: left; width: 180px;">
+                <select class="selectpicker show-tick form-control" id="browse_select"
+                        autocomplete="off">
+                    <option value="0">All</option>
+                    <option value="1" class="ind_sl">P-value < 0.05</option>
+                    <option value="2" class="ind_sl">FDR(BH) < 0.05</option>
+                    <option value="3" class="ind_sl">FDR(Bonferroni) < 0.05</option>
+                </select>
+            </div>
+            <label for="Display">Sort By：</label>
+            <div style=" float: left; width: 180px;">
+                <select class="selectpicker show-tick form-control" id="browse_sort"
+                        autocomplete="off">
+                    <option value="0">ID</option>
+                    <option value="1" class="ind_sl">P-value</option>
+                    <option value="2" class="ind_sl">FDR(BH)</option>
+                    <option value="3" class="ind_sl">FDR(Bonferroni)</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary pull-right" style="margin-right: 15px" id="dl-btn" type="button">Download
+            </button>
+        </div>
+        <input type="hidden" id="req_name" value="{{ herb.ID }}">
+    </form>
+    <table id="table"></table>
+{% endblock %}
+
+

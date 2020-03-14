@@ -1,0 +1,34 @@
+{% extends "rambler/base.html" %}
+
+{% load static %}
+
+{% block title %}Advanced search{% endblock %}
+
+{% block content %}
+    <script src="{% static "js/advanced_search.js" %}"></script>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Structure search</h3>
+        </div>
+        <div class="panel-body">
+            <div style="text-align: center">
+                <iframe id="ifKetcher" src="{% static "ketcher/ketcher.html" %}" width="800" height="500"></iframe>
+            </div>
+            <div style="text-align: center">
+                <button type="button" class="btn btn-primary btn-lg" onclick="do_search()">Exact search</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-primary btn-lg" onclick="do_search()">Similarity search</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="search_result" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Results</h3>
+        </div>
+        <div class="panel-body">
+            <table id="table"></table>
+        </div>
+    </div>
+{% endblock %}
+

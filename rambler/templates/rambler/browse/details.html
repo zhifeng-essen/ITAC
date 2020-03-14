@@ -1,0 +1,24 @@
+{% extends "rambler/base.html" %}
+{% load static %}
+{% block title %}Details page{% endblock %}
+
+{% block content %}
+    <script src="{% static "js/browse_details.js" %}" type="text/javascript"></script>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Basic Information</h3>
+        </div>
+        <div class="panel-body">
+            {% block summary-panel %}{% endblock %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Related Components</h3>
+        </div>
+        <div class="panel-body">
+            {% block component-panel %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

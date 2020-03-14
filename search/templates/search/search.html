@@ -1,0 +1,190 @@
+{% extends "rambler/base.html" %}
+{% load static %}
+
+{% block title %}Search page{% endblock %}
+{% block content %}
+    <script src="{% static "js/search.js" %}"></script>
+    <script type="text/javascript" src="prototype-min.js"></script>
+    <script type="text/javascript" src="ketcher.js"></script>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Search Database</h3>
+        </div>
+        <div class="panel-body">
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#herb" data-toggle="tab">Herb</a></li>
+                <li><a href="#pre" data-toggle="tab">Prescription</a></li>
+                <li><a href="#ing" data-toggle="tab">Ingredient</a></li>
+                <li><a href="#tar" data-toggle="tab">Target</a></li>
+                <li><a href="#dis" data-toggle="tab">Disease</a></li>
+            </ul>
+            <br>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="herb">
+                    <form id="tf_herb">
+                        <input type="hidden" name="table_name" value="Herb">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div id="herb_ser_box" class="input-group">
+                                    <input id="herb_ipt" data-provide="typeahead" type="text"
+                                           class="form-control" name="key" placeholder="qinghao">
+                                    <span class="input-group-btn">
+                                                <input class="btn btn-default" type="submit" value="Search"
+                                                       id="herb_search">
+                                            </span>
+                                </div>
+                                <div id="herb_bot_box" style="display: none;">
+                                    <ul id="herb_oul"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <br>
+                    <h5>Available Fields: </h5>
+                    <ul>
+                        <li>Chinese name: <em>e.g.</em> <a href="#" class="herb_example">青蒿</a></li>
+                        <li>Pinyin name: <em>e.g.</em> <a href="#" class="herb_example">qing hao</a></li>
+                        <li>Latin name: <em>e.g.</em> <a href="#" class="herb_example"><i>Herba Artemisiae Annuae</i></a></li>
+                        <li>English name: <em>e.g.</em> <a href="#" class="herb_example">sweet wormwood herb</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane fade" id="pre">
+                    <form id="tf_pre">
+                        <input type="hidden" name="table_name" value="Prescription">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div id="pre_ser_box" class="input-group">
+                                    <input id="pre_ipt" type="text" class="form-control" name="key"
+                                           placeholder="加味参夏汤">
+                                    <span class="input-group-btn">
+                                                <input class="btn btn-default" type="submit" value="Search"
+                                                       id="pre_search">
+                                            </span>
+                                </div>
+                                <div id="pre_bot_box" style="display: none;">
+                                    <ul id="pre_oul"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <br>
+                    <h5>Available Fields: </h5>
+                    <ul>
+                        <li>Prescription name: <em>e.g.</em><a href="#" class="pre_example">加味参夏汤</a></li>
+                        <li>Prescription pinyin name: <em>e.g.</em> <a href="#" class="pre_example">JIA WEI CAN XIA TANG</a></li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane fade" id="ing">
+                    <form id="tf_ing">
+                        <input type="hidden" name="table_name" value="Ingredient">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div id="ing_ser_box" class="input-group">
+                                    <input id="ing_ipt" type="text" class="form-control" name="key"
+                                           placeholder="artemisinin">
+                                    <span class="input-group-btn">
+                                                <input class="btn btn-default" type="submit" value="Search"
+                                                       id="ing_search">
+                                            </span>
+                                </div>
+                                <div id="ing_bot_box" style="display: none;">
+                                    <ul id="ing_oul"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <br>
+                    <h5>Available Fields: </h5>
+                    <ul>
+                        <li>Molecule name: <em>e.g.</em> <a href="#" class="ing_example">artemisinin</a></li>
+                        <li>CAS id: <em>e.g.</em> <a href="#" class="ing_example">63968-64-9</a></li>
+                        <li>Alias: <em>e.g.</em> <a href="#" class="ing_example">qinghaosu</a>,
+                            <a href="#" class="ing_example">artemisinine</a>,
+                            <a href="#" class="ing_example">artemisinina</a></li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane fade" id="tar">
+                    <form id="tf_tar">
+                        <input type="hidden" name="table_name" value="Target">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div id="tar_ser_box" class="input-group">
+                                    <input id="tar_ipt" type="text" class="form-control" name="key"
+                                           placeholder="IL6">
+                                    <span class="input-group-btn">
+                                                <input class="btn btn-default" type="submit" value="Search"
+                                                       id="tar_search">
+                                            </span>
+                                </div>
+                                <div id="tar_bot_box" style="display: none;">
+                                    <ul id="tar_oul"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <br>
+                    <h5>Available Fields: </h5>
+                    <ul>
+                        <li>Gene symbol: <em>e.g.</em> <a href="#" class="tar_example">IL6</a></li>
+                        <li>Gene name: <em>e.g.</em> <a href="#" class="tar_example">interleukin 6</a></li>
+                        <li>Protein name: <em>e.g.</em> <a href="#" class="tar_example">Interleukin-6</a></li>
+                        <li>Ensembl id: <em>e.g.</em> <a href="#" class="tar_example">ENSG00000136244</a></li>
+                        <li>Alias: <em>e.g.</em> <a href="#" class="tar_example">BSF2</a>, <a href="#"
+                                                                                              class="tar_example">CDF</a>,
+                            <a href="#" class="tar_example">IFN-beta-2</a></li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane fade" id="dis">
+                    <form id="tf_dis">
+                        <input type="hidden" name="table_name" value="Disease">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div id="dis_ser_box" class="input-group">
+                                    <input id="dis_ipt" type="text" class="form-control" name="key"
+                                           placeholder="malaria">
+                                    <span class="input-group-btn">
+                                                <input class="btn btn-default" type="submit" value="Search"
+                                                       id="dis_search">
+                                            </span>
+                                </div>
+                                <div id="dis_bot_box" style="display: none;">
+                                    <ul id="dis_oul"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <br>
+                    <h5>Available Fields: </h5>
+                    <ul>
+                        <li>Disease name: <em>e.g.</em> <a href="#" class="dis_example">malaria</a></li>
+                        <li>Alias: <em>e.g.</em> <a href="#" class="dis_example">impaludism</a>, <a href="#"
+                                                                                                    class="dis_example">swamp
+                            fever</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="search_result" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Results</h3>
+        </div>
+        <div class="panel-body">
+            <table id="table"></table>
+        </div>
+    </div>
+
+
+{% endblock %}
+
